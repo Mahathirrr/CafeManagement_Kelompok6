@@ -20,6 +20,46 @@ import java.util.Date;
  */
 public class Dashboard extends JFrame {
 
+    private double total = 0.0;
+    private int x = 0;
+    private double tax = 0.0;
+    private CoffeeShopItem[] items;
+    private final CoffeeShopCalculator calculator = new CoffeeShopCalculator();
+
+    public Dashboard() {
+        initComponents();
+        init();
+        setImage();
+    }
+
+    public void init() {
+        setTime();
+        items = new CoffeeShopItem[]{
+                new CoffeeShopItem("Affogato", 20.0, "/cafeguii/images2/affogato.jpg", jLabelImage1),
+                new CoffeeShopItem("Americano", 26.0, "/cafeguii/images2/americano.jpg", jLabelImage2),
+                new CoffeeShopItem("Cappuccino", 22.0, "/cafeguii/images2/cappucino.jpg", jLabelImage3),
+                new CoffeeShopItem("Cheesecake", 24.0, "/cafeguii/images2/cheesecake.jpg", jLabelImage4),
+                new CoffeeShopItem("Croissant", 20.0, "/cafeguii/images2/croissant.jpg", jLabelImage5),
+                new CoffeeShopItem("Egg Toast", 20.0, "/cafeguii/images2/eggtoast.jpg", jLabelImage6),
+                new CoffeeShopItem("Espresso", 18.0, "/cafeguii/images2/espresso.JPG", jLabelImage7),
+                new CoffeeShopItem("Iced Tea", 20.0, "/cafeguii/images2/icedtea.JPG", jLabelImage8),
+                new CoffeeShopItem("Latte", 16.0, "/cafeguii/images2/latte.JPG", jLabelImage9),
+                new CoffeeShopItem("Lemon Tea", 16.0, "/cafeguii/images2/lemontea.jpg", jLabelImage10),
+                new CoffeeShopItem("Macchiato", 22.0, "/cafeguii/images2/macchiato.jpg", jLabelImage11),
+                new CoffeeShopItem("Matcha", 20.0, "/cafeguii/images2/matcha.jpg", jLabelImage12),
+                new CoffeeShopItem("Mineral Water", 8.0, "/cafeguii/images2/mineralwater.jpg", jLabelImage13),
+                new CoffeeShopItem("Mocha", 24.0, "/cafeguii/images2/mocha.jpg", jLabelImage14),
+                new CoffeeShopItem("Red Velvet Cake", 24.0, "/cafeguii/images2/redvelvetcake.jpg", jLabelImage15)
+        };
+    }
+    public void setImage() {
+        for (CoffeeShopItem item : items) {
+            ImageIcon icon = item.getIcon();
+            Image img = icon.getImage().getScaledInstance(item.getLabel().getWidth(), item.getLabel().getHeight(), Image.SCALE_SMOOTH);
+            item.getLabel().setIcon(new ImageIcon(img));
+        }
+    }
+
     // Variables declaration - do not modify
     private JButton btnExit;
     private JButton btnReceipt;
@@ -179,6 +219,55 @@ public class Dashboard extends JFrame {
     private JLabel jTxtDate;
     private JLabel jTxtTime;
     // End of variables declaration
+
+    public boolean qtyIsZero(int qty) {
+        if (qty == 0) {
+            JOptionPane.showMessageDialog(null, "Please increase the item quantity");
+            return false;
+        }
+        return true;
+    }
+
+    public void reset() {
+        total = 0.0;
+        x = 0;
+        tax = 0.0;
+        btnTotal.setEnabled(false);
+        jSpinner1.setValue(0);
+        jSpinner2.setValue(0);
+        jSpinner3.setValue(0);
+        jSpinner4.setValue(0);
+        jSpinner5.setValue(0);
+        jSpinner6.setValue(0);
+        jSpinner7.setValue(0);
+        jSpinner8.setValue(0);
+        jSpinner9.setValue(0);
+        jSpinner10.setValue(0);
+        jSpinner11.setValue(0);
+        jSpinner12.setValue(0);
+        jSpinner13.setValue(0);
+        jSpinner14.setValue(0);
+        jSpinner15.setValue(0);
+        jTextFieldTax.setText("0.0");
+        jTextFieldSubTotal.setText("0.0");
+        jTextFieldTotal.setText("0.0");
+        jTextArea.setText("");
+        jCheckBox1.setSelected(false);
+        jCheckBox2.setSelected(false);
+        jCheckBox3.setSelected(false);
+        jCheckBox4.setSelected(false);
+        jCheckBox5.setSelected(false);
+        jCheckBox6.setSelected(false);
+        jCheckBox7.setSelected(false);
+        jCheckBox8.setSelected(false);
+        jCheckBox9.setSelected(false);
+        jCheckBox10.setSelected(false);
+        jCheckBox11.setSelected(false);
+        jCheckBox12.setSelected(false);
+        jCheckBox13.setSelected(false);
+        jCheckBox14.setSelected(false);
+        jCheckBox15.setSelected(false);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -1664,7 +1753,7 @@ public class Dashboard extends JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>
 
-     private void handleCheckBoxAction(JCheckBox checkBox, JSpinner spinner, JLabel label, int index) {
+    private void handleCheckBoxAction(JCheckBox checkBox, JSpinner spinner, JLabel label, int index) {
         int qty = Integer.parseInt(spinner.getValue().toString());
         if (qtyIsZero(qty) && checkBox.isSelected()) {
             x++;
