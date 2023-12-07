@@ -24,7 +24,19 @@ The project uses Java AWT and Swing libraries for the graphical user interface. 
 4. Click the "Total" button to calculate the total price with tax.
 5. Optionally, print a receipt using the "Receipt" button.
 
+## Application Preview
+
+<p align="center">
+  <img src="https://github.com/Mahathirrr/CoffeeShop/assets/111866202/5e37fa57-328f-47ca-9cdc-edb38149caf8" alt="CoffeeShop Dashboard" width="75%">
+</p>
+
+<p align="center">
+  <em>CoffeeShop Dashboard displaying the coffee shop interface.</em>
+</p>
+
 ## Contributors
+
+### Kelompok 6
 
 - Muhammad Mahathir (2208107010056)
 - Azri Harniza (2208107010034)
