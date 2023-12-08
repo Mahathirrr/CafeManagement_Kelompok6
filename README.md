@@ -2,6 +2,10 @@
 
 This Java GUI application is a CoffeeShop management system. It allows users to select various coffee and pastry items, calculate the total price with tax, and generate a receipt.
 
+## Disclaimer
+
+Please note that the appearance or behavior of the program may vary between different operating systems. The application has been tested and is almost fine on **Linux**. It is highly recommended to try the application on a **Linux** system for the optimal experience.
+
 ## Project Overview
 
 The project uses Java AWT and Swing libraries for the graphical user interface. It consists of the following components:
